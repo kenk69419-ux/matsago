@@ -31,11 +31,11 @@ jobs:
       - name: Make Gradlew Executable
         run: chmod +x android/gradlew
 
-      - name: Build APK Release
-        run: flutter build apk --release --android-skip-build-dependency-validation
+      - name: Build APK Release (Split Per ABI - Ringan ~10MB)
+        run: flutter build apk --release --split-per-abi --android-skip-build-dependency-validation
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: amalin-ortu-release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
