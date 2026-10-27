@@ -375,12 +375,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildNotificationCard(AttendanceHistory item) {
-    final dateFormat = DateFormat('EEEE, d MMM yyyy - HH:mm', 'id_ID');
     String formattedDate;
     try {
+      final dateFormat = DateFormat('EEEE, d MMM yyyy - HH:mm', 'id_ID');
       formattedDate = dateFormat.format(item.receivedAt);
     } catch (_) {
-      formattedDate = item.receivedAt.toString().substring(0, 16);
+      try {
+        final d = item.receivedAt;
+        formattedDate =
+            '${d.day.toString().padLeft(2, '0')}/${d.month.toString().padLeft(2, '0')}/${d.year} ${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
+      } catch (_) {
+        formattedDate = item.receivedAt.toString();
+      }
     }
 
     final isMasuk = item.body.toLowerCase().contains('masuk');
