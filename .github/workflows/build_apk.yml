@@ -31,11 +31,11 @@ jobs:
       - name: Make Gradlew Executable
         run: chmod +x android/gradlew
 
-      - name: Build APK Release (Split Per ABI - Ringan ~10MB)
+      - name: Build APK Release (Split Per ABI)
         run: flutter build apk --release --split-per-abi --android-skip-build-dependency-validation
 
-      - name: Upload APK Artifact
+      - name: Upload APK Arm64 Saja (Hanya ~12MB)
         uses: actions/upload-artifact@v4
         with:
-          name: amalin-ortu-release-apk
-          path: build/app/outputs/flutter-apk/*.apk
+          name: amalin-ortu-release-apk-12MB
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
