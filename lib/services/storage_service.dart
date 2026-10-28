@@ -7,8 +7,8 @@ class StorageService {
   static const String _keyStudent = 'active_student';
   static const String _keyHistory = 'attendance_history';
 
-  // Default server URL - sesuaikan dengan domain atau IP server Amalin
-  static const String defaultBaseUrl = 'http://10.0.2.2/amalin'; // 10.0.2.2 untuk emulator, ganti dengan domain/IP jika di HP asli
+  // Default server URL - domain resmi sekolah
+  static const String defaultBaseUrl = 'https://amalin.mtsmaarifkaligowong.sch.id';
 
   static Future<String> getBaseUrl() async {
     final prefs = await SharedPreferences.getInstance();
