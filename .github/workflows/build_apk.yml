@@ -34,8 +34,8 @@ jobs:
       - name: Build APK Release (Split Per ABI)
         run: flutter build apk --release --split-per-abi --android-skip-build-dependency-validation
 
-      - name: Build Universal APK (Support Semua HP)
-        run: flutter build apk --release --android-skip-build-dependency-validation
+      - name: Build Universal APK Slim (Khusus HP Android, Buang Kode PC x86)
+        run: flutter build apk --release --target-platform android-arm,android-arm64 --android-skip-build-dependency-validation
 
       - name: Upload APK Universal (Semua HP Android)
         uses: actions/upload-artifact@v4
